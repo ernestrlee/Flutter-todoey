@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoeyflutter/widgets/tasks_list.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
@@ -57,22 +58,7 @@ class TasksScreen extends StatelessWidget {
                     topRight: Radius.circular(20.0),
                 ),
               ),
-              child: ListView(
-                children: <Widget>[
-                  ListTile(
-                    title: Text('task 1'),
-                    trailing: Checkbox(
-                      value: false,
-                    ),
-                  ),
-                  ListTile(
-                    title: Text('task 1'),
-                    trailing: Checkbox(
-                      value: false,
-                    ),
-                  ),
-                ],
-              ),
+              child: TasksList(),
             ),
           ),
         ],
@@ -80,3 +66,7 @@ class TasksScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
