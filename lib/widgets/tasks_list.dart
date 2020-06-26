@@ -17,13 +17,18 @@ class _TasksListState extends State<TasksList> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemBuilder: (context, index) {
-        return TaskTile(
-          taskTitle: tasks[index].name,
-          isChecked: tasks[index].isDone,
-        );
-      },
-      itemCount: tasks.length,
-    );
+        itemBuilder: (context, index) {
+          return TaskTile(
+            taskTitle: tasks[index].name,
+            isChecked: tasks[index].isDone,
+            checkboxCallback: (bool checkboxState) {
+              setState(() {
+                tasks[index].toggleDone();
+              });
+            },
+          );
+        },
+        itemCount: tasks.length,
+      );
+    }
   }
-}
