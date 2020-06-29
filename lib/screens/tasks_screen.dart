@@ -22,12 +22,6 @@ class _TasksScreenState extends State<TasksScreen> {
     Task(name: 'Buy bread'),
   ];
 
-  void addTask(String task) {
-    setState(() {
-      tasks.add(Task(name: task));
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +33,12 @@ class _TasksScreenState extends State<TasksScreen> {
           showModalBottomSheet(context: context,isScrollControlled: true,
               builder: (context) => SingleChildScrollView(
                   padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                  child: AddTaskScreen(addTask),
+                  child: AddTaskScreen( (newTaskTitle) {
+                    setState(() {
+                      tasks.add(Task(name: newTaskTitle));
+                    });
+                    Navigator.pop(context);
+                  }),
               ),
           );
         },
@@ -74,7 +73,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   ),
                 ),
                 Text(
-                  '12 Tasks',
+                  '${tasks.length} Tasks',
                   style: TextStyle(
                     color: Colors.white,
                   ),
