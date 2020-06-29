@@ -19,7 +19,7 @@ class TasksList extends StatelessWidget {
             },
           );
         },
-        itemCount: Provider.of<TaskData>(context).tasks.length,
+        itemCount: Provider.of<TaskData>(context).taskCount,
       );
     }
   }
